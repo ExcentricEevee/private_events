@@ -3,6 +3,8 @@
 <h3>Events Created</h3>
 <ul>
     <% @user.created_events.each do |event| %>
-        <li><%= event.title %></li>
+        <li><%= link_to event.title, event %></li>
     <% end %>
 </ul>
+
+<%= link_to "Back", "javascript:history.back()" %>

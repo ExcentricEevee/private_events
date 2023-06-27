@@ -1,6 +1,8 @@
 <h3><%= @event.title %></h3>
-<p>Creator: <%= @event.creator.username %></p>
+<p>Creator: <%= link_to @event.creator.username, @event.creator %></p>
 <p>Date: <time><%= @event.date %></time></p>
 <p>Location: <%= @event.location %></p><br />
 
 <p><%= @event.description %></p>
+
+<%= link_to "Back", "javascript:history.back()" %>
