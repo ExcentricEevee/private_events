@@ -5,4 +5,11 @@
 
 <p><%= @event.description %></p>
 
+<ul>
+    <% @event.attendees.each do |attendee| %>
+        <li><%= attendee.username %></li>
+    <% end %>
+</ul>
+
+<%= link_to "Attend", event_attendances_path(event_id: @event.id), data: { turbo_method: "post" } %>
 <%= link_to "Back", "javascript:history.back()" %>
