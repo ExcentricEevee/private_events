@@ -7,4 +7,11 @@
     <% end %>
 </ul>
 
+<h3>Attending</h3>
+<ul>
+    <% @user.attended_events.each do |event| %>
+        <li><%= link_to event.title, event %></li>
+    <% end %>
+</ul>
+
 <%= link_to "Back", "javascript:history.back()" %>
