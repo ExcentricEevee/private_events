@@ -2,6 +2,7 @@ class EventAttendancesController < ApplicationController
     before_action :authenticate_user!
 
     def create
+        # event_id is passed from the events#show view
         @event = Event.find(params[:event_id])
         @attendee = EventAttendance.new(attendee_id: current_user.id, event_id: @event.id)
 
@@ -22,6 +23,10 @@ class EventAttendancesController < ApplicationController
     end
 
     def destroy
+        @event = Event.find(params[:id])
+        @attendee = EventAttendance.find_by(attendee_id: current_user.id, event_id: @event.id)
+        @attendee.destroy
 
+        redirect_to event_path(@event)
     end
 end
