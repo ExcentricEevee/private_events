@@ -1,3 +1,7 @@
+<% if current_user.id == @event.creator.id %>
+    <%= link_to "Edit", edit_event_path(@event) %>
+<% end %>
+
 <h3><%= @event.title %></h3>
 <p>Creator: <%= link_to @event.creator.username, @event.creator %></p>
 <p>Date: <time><%= @event.date %></time></p>
@@ -5,9 +9,10 @@
 
 <p><%= @event.description %></p>
 
+<h5>Attending:</h5>
 <ul>
     <% @event.attendees.each do |attendee| %>
-        <li><%= attendee.username %></li>
+        <li><%= link_to attendee.username, attendee %></li>
     <% end %>
 </ul>
 
